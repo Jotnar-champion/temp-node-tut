@@ -1,9 +1,13 @@
-// npm init -y
-//npm init
+//on - listen for an event
+//emit -- emits and event
 
-const lodash = require("lodash");
+const EventEmitter = require("events");
 
-const items = [1, [2, [3, [4, [5]]]]];
+const customEmitter = new EventEmitter();
 
-const newItems = lodash.flattenDeep(items);
-console.log(newItems);
+// on string or symbol should match that of the emit
+customEmitter.on("response", () => {
+  console.log("data Received");
+});
+
+customEmitter.emit("response");
